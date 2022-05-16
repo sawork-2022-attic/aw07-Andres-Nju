@@ -15,3 +15,11 @@ Use [Spring Cloud Stream](https://spring.io/projects/spring-cloud-stream) to mak
 - 感谢id为“AldrichZeng”的学长在作业5报告中提到的关于`cartsRepository.save(cart)`会报错的bug，改用了本地存储购物车信息
   - 自己实现一个`CartRepositoryImpl`类继承老师提供的`CartRepository`接口，在该类中定义一个cart的List存放carts信息
 
+尝试向id = 2的购物车中添加一个新的item（两次，观察到返回过来的body中amount = 2）：
+
+![1](ref/1.png)
+
+Get /carts/2/total命令获取总价格为149 x 2 = 298：
+
+![2](ref/2.png)
+
