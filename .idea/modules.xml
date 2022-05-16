@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/aw07-Andres-Nju.iml" filepath="$PROJECT_DIR$/.idea/aw07-Andres-Nju.iml" />
+      <module fileurl="file://$PROJECT_DIR$/micropos.iml" filepath="$PROJECT_DIR$/micropos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pos-api/pos-api.iml" filepath="$PROJECT_DIR$/pos-api/pos-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pos-carts/pos-carts.iml" filepath="$PROJECT_DIR$/pos-carts/pos-carts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pos-counter/pos-counter.iml" filepath="$PROJECT_DIR$/pos-counter/pos-counter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pos-discovery/pos-discovery.iml" filepath="$PROJECT_DIR$/pos-discovery/pos-discovery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pos-gateway/pos-gateway.iml" filepath="$PROJECT_DIR$/pos-gateway/pos-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pos-products/pos-products.iml" filepath="$PROJECT_DIR$/pos-products/pos-products.iml" />
+    </modules>
+  </component>
+</project>
