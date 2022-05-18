@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/pos-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pos-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pos-api/target/generated-sources/openapi/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pos-carts/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pos-carts/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pos-counter/src/main/java" charset="UTF-8" />
@@ -11,6 +12,8 @@
     <file url="file://$PROJECT_DIR$/pos-discovery/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pos-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pos-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pos-orders/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pos-orders/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pos-products/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/pos-products/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />

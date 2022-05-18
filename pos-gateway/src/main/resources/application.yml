@@ -14,8 +14,8 @@ spring:
           uri: lb://pos-carts
           predicates:
             - Path=/carts/**
-        - id: counter
-          uri: lb://pos-counter
+        - id: orders
+          uri: lb://pos-orders
           predicates:
-            - Path=/counter/**
+            - Path=/orders/**
 

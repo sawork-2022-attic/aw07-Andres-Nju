@@ -19,7 +19,7 @@ import javax.annotation.Generated;
  * CartItemDto
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-16T12:18:20.975518400+08:00[GMT+08:00]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-18T13:46:51.346365300+08:00[GMT+08:00]")
 public class CartItemDto   {
 
   @JsonProperty("id")
