@@ -8,6 +8,7 @@ package com.micropos.api;
 import com.micropos.dto.CartDto;
 import com.micropos.dto.CartItemDto;
 import com.micropos.dto.ErrorDto;
+import com.micropos.dto.OrderDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -31,7 +32,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-18T13:46:51.346365300+08:00[GMT+08:00]")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-05-19T15:44:00.865920200+08:00[GMT+08:00]")
 @Validated
 @Tag(name = "carts", description = "the carts API")
 public interface CartsApi {
@@ -71,6 +72,44 @@ public interface CartsApi {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"id\" : 0, \"items\" : [ { \"amount\" : 1, \"product\" : { \"image\" : \"image\", \"price\" : 5.962133916683182, \"name\" : \"name\", \"id\" : \"id\" }, \"id\" : 6 }, { \"amount\" : 1, \"product\" : { \"image\" : \"image\", \"price\" : 5.962133916683182, \"name\" : \"name\", \"id\" : \"id\" }, \"id\" : 6 } ] }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * POST /carts/{cartId}/checkout : checkout cart, generate an order
+     *
+     * @param cartId The id of the cart to checkout (required)
+     * @return Expected response to a valid request (status code 200)
+     *         or unexpected error (status code 200)
+     */
+    @Operation(
+        operationId = "checkOut",
+        summary = "checkout cart, generate an order",
+        tags = { "cart" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Expected response to a valid request", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  OrderDto.class))),
+            @ApiResponse(responseCode = "200", description = "unexpected error", content = @Content(mediaType = "application/json", schema = @Schema(implementation =  ErrorDto.class)))
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = "/carts/{cartId}/checkout",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<OrderDto> checkOut(
+        @Parameter(name = "cartId", description = "The id of the cart to checkout", required = true, schema = @Schema(description = "")) @PathVariable("cartId") Integer cartId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"id\" : 0, \"time\" : \"time\", \"items\" : [ { \"amount\" : 1, \"product\" : { \"image\" : \"image\", \"price\" : 5.962133916683182, \"name\" : \"name\", \"id\" : \"id\" }, \"id\" : 6 }, { \"amount\" : 1, \"product\" : { \"image\" : \"image\", \"price\" : 5.962133916683182, \"name\" : \"name\", \"id\" : \"id\" }, \"id\" : 6 } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

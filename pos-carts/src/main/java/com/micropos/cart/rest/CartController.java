@@ -9,6 +9,8 @@ import com.micropos.cart.service.CartService;
 import com.micropos.dto.CartDto;
 import com.micropos.dto.CartItemDto;
 import com.micropos.dto.ProductDto;
+import com.micropos.dto.OrderDto;
+import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.http.HttpStatus;
@@ -88,11 +90,22 @@ public class CartController implements CartsApi {
     @GetMapping("/{cartId}/total")
     public ResponseEntity<Double> showCartTotal(@PathVariable("cartId") Integer cartId) {
 
-        Double total = cartService.checkout(cartId);
+        Double total = cartService.checkTotal(cartId);
 
         if (total == -1d) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(total);
     }
+
+    @Override
+    @PostMapping("/{cartId}/checkout")
+    public ResponseEntity<OrderDto> checkOut(@PathVariable("cartId") Integer cartId) {
+
+        OrderDto orderDto = cartService.checkOut(cartId);
+        if (orderDto == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(orderDto, HttpStatus.OK);
+
+    }
+
 }

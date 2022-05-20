@@ -35,7 +35,7 @@ public class OrderController implements OrdersApi {
 
     @Override
     @PostMapping()
-    public ResponseEntity<OrderDto> createOrder(CartDto cartDto) {
+    public ResponseEntity<OrderDto> createOrder(@RequestBody  CartDto cartDto) {
         //System.out.println("order controller: createOrder: " + cartDto.toString());
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = df.format(new Date());

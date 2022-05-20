@@ -145,6 +145,34 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
+  /carts/{cartId}/checkout:
+    post:
+      summary: checkout cart, generate an order
+      operationId: checkOut
+      tags:
+        - cart
+      parameters:
+        - name: cartId
+          in: path
+          required: true
+          description: The id of the cart to checkout
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
   /orders:
     get:
       summary: List all orderss

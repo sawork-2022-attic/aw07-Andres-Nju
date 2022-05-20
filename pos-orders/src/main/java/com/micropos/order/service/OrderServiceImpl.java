@@ -59,7 +59,7 @@ public class OrderServiceImpl implements OrderService {
         order.items(items);
         order = orderRepository.save(order);
         //orderDtoToSend = orderMapper.toOrderDto(order);
-        sendOrder(order); // send order to rabbitmq
+        //sendOrder(order); // send order to rabbitmq
         return order;
     }
 

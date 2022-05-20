@@ -15,5 +15,7 @@ public interface CartRepository <Cart, Integer> {
     List<Item> findItemsOfCart(int id);
     boolean addItemToCart(int cartId, Item item);
     boolean ModifyItem(int cartId, Item item);
+    boolean DeleteItem(int cartId, Item item);
 
+    boolean DeleteCart(com.micropos.cart.model.Cart cart);
 }

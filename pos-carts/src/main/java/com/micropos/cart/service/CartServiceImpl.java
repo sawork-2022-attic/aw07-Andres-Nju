@@ -8,6 +8,7 @@ import com.micropos.cart.model.Cart;
 import com.micropos.cart.model.Item;
 import com.micropos.cart.repository.CartRepository;
 import com.micropos.dto.CartDto;
+import com.micropos.dto.OrderDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.data.util.Streamable;
@@ -25,7 +26,9 @@ public class CartServiceImpl implements CartService {
 
     private CartRepository cartRepository;
 
-    private final String COUNTER_URL = "http://POS-COUNTER/counter/";
+    private final String COUNTER_URL = "http://POS-COUNTER/counter";
+
+    private final String ORDER_URL = "http://POS-ORDERS/orders";
 
     private CartMapper cartMapper;
 
@@ -48,7 +51,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Double checkout(Cart cart) {
+    public Double checkTotal(Cart cart) {
         CartDto cartDto = cartMapper.toCartDto(cart);
         ObjectMapper mapper = new ObjectMapper();
 
@@ -71,12 +74,12 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Double checkout(Integer cartId) {
+    public Double checkTotal(Integer cartId) {
         Cart cart = (Cart) this.cartRepository.findCartById(cartId);
 
         if (cart == null) return Double.valueOf(-1);
 
-        return this.checkout(cart);
+        return this.checkTotal(cart);
     }
 
     @Override
@@ -100,5 +103,31 @@ public class CartServiceImpl implements CartService {
     @Override
     public Cart addCart(Cart cart) {
         return cartRepository.saveCart(cart);
+    }
+
+    @Override
+    public OrderDto checkOut(Cart cart){
+        CartDto cartDto = cartMapper.toCartDto(cart);
+        ObjectMapper mapper = new ObjectMapper();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> request = null;
+        try {
+            request = new HttpEntity<>(mapper.writeValueAsString(cartDto), headers);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        OrderDto orderDto = restTemplate.postForObject(ORDER_URL, request, OrderDto.class);
+        cartRepository.DeleteCart(cart);
+        return orderDto;
+    }
+
+    @Override
+    public OrderDto checkOut(Integer cartId){
+        Cart cart = (Cart) this.cartRepository.findCartById(cartId);
+
+        if (cart == null) return null;
+        return checkOut(cart);
     }
 }

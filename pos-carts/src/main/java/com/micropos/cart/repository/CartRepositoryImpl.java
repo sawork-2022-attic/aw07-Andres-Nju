@@ -2,13 +2,11 @@ package com.micropos.cart.repository;
 
 import com.micropos.cart.model.Cart;
 import com.micropos.cart.model.Item;
-import com.micropos.dto.ProductDto;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
 @Repository
 public class CartRepositoryImpl implements CartRepository {
 
@@ -61,6 +59,7 @@ public class CartRepositoryImpl implements CartRepository {
     @Override
     public boolean ModifyItem(int cartId, Item item) {
         Cart cart = this.findCartById(cartId);
+        if (cart == null) return false;
         for(Item it : cart.getItems()){
             if(it.getProductId().equals(item.getProductId())){
                 cart.getItems().set(cart.getItems().indexOf(it), item);
@@ -68,5 +67,22 @@ public class CartRepositoryImpl implements CartRepository {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean DeleteItem(int cartId, Item item) {
+        Cart cart = this.findCartById(cartId);
+        if (cart == null) return false;
+        for(Item it : cart.getItems()){
+            if(it.getProductId().equals(item.getProductId())){
+                return cart.removeItem(item);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean DeleteCart(Cart cart){
+        return carts.remove(cart);
     }
 }
