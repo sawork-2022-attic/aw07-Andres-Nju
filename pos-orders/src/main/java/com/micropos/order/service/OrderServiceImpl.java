@@ -45,7 +45,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order createOrder(CartDto cart, String time) {
         Order order = new Order().time(time);
-        order = orderRepository.save(order);
         List<Item> items = new ArrayList<>();
         for (CartItemDto cartItem : cart.getItems()) {
             items.add(
@@ -57,8 +56,7 @@ public class OrderServiceImpl implements OrderService {
 
         }
         order.items(items);
-        order = orderRepository.save(order);
-        //orderDtoToSend = orderMapper.toOrderDto(order);
+        order = orderRepository.saveOrder(order);
         //sendOrder(order); // send order to rabbitmq
         return order;
     }
@@ -69,25 +67,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
-    // use streamBridge
-//    private OrderDto orderDtoToSend = new OrderDto().id(-1).time("2022-1-1");
-//
-//    @Bean
-//    public Supplier<OrderDto> supplyOrder() {
-//
-//        return () -> {
-//            log.info("supply {}", orderDtoToSend.toString());
-//            return orderDtoToSend;
-//        };
-//    }
-
     @Override
     public List<Order> getAllOrders() {
-        return Streamable.of(orderRepository.findAll()).toList();
+        return Streamable.of(orderRepository.findAllOrders()).toList();
     }
 
     @Override
-    public Optional<Order> getOrder(Integer orderId) {
-        return orderRepository.findById(orderId);
+    public Order getOrder(Integer orderId) {
+        return (Order) orderRepository.findOrderById(orderId);
     }
 }

@@ -41,8 +41,10 @@ public class OrderController implements OrdersApi {
         String date = df.format(new Date());
 
         Order order = orderService.createOrder(cartDto, date);
-        OrderDto orderDto = orderMapper.toOrderDto(order);
-        return ResponseEntity.ok(orderDto);
+        if (order == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(orderMapper.toOrderDto(order),HttpStatus.OK);
     }
 
 
@@ -57,11 +59,11 @@ public class OrderController implements OrdersApi {
     @GetMapping("/{orderId}")
     public ResponseEntity<OrderDto> showOrderById(@PathVariable("orderId") Integer orderId) {
 
-        Optional<Order> order = orderService.getOrder(orderId);
-        if (order.isEmpty()) {
+        Order order = orderService.getOrder(orderId);
+        if (order == null) {
             return ResponseEntity.notFound().build();
         }
-        OrderDto orderDto = orderMapper.toOrderDto(order.get());
+        OrderDto orderDto = orderMapper.toOrderDto(order);
         return ResponseEntity.ok(orderDto);
     }
 }

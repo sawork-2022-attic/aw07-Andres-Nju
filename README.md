@@ -32,6 +32,7 @@ Get /carts/2/total命令获取总价格为149 x 2 = 298：
   - int id编号
   - string time 创建时间
   - List of items 订单中的商品
+- 文件结构与carts类似，也是自己实现的`OrderRepositoryImpl`类在本地存order信息，避免.save()方法的报错
 - api：
   - GET /orders: 获取所有的order信息
   - GET /orders/{orderId}: 获取id为orderId的order信息
