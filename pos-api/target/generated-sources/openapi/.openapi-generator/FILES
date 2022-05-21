@@ -3,10 +3,12 @@ pom.xml
 src/main/java/com/micropos/api/ApiUtil.java
 src/main/java/com/micropos/api/CartsApi.java
 src/main/java/com/micropos/api/CounterApi.java
+src/main/java/com/micropos/api/DeliveryApi.java
 src/main/java/com/micropos/api/OrdersApi.java
 src/main/java/com/micropos/api/ProductsApi.java
 src/main/java/com/micropos/dto/CartDto.java
 src/main/java/com/micropos/dto/CartItemDto.java
+src/main/java/com/micropos/dto/DeliveryEntryDto.java
 src/main/java/com/micropos/dto/ErrorDto.java
 src/main/java/com/micropos/dto/OrderDto.java
 src/main/java/com/micropos/dto/OrderItemDto.java

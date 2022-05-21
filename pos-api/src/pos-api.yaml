@@ -322,6 +322,26 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+
+  /delivery:
+    get:
+      summary: List all delivery
+      operationId: listDelivery
+      tags:
+        - delivery
+      responses:
+        '200':
+          description: A paged array of delivery
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeliveryEntries"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     Carts:
@@ -376,6 +396,18 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/OrderItem"
+    DeliveryEntries:
+      type: array
+      items:
+        $ref: "#/components/schemas/DeliveryEntry"
+    DeliveryEntry:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          format: int32
+        status:
+          type: string
     Product:
       type: object
       required:

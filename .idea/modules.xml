@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/pos-api/pos-api.iml" filepath="$PROJECT_DIR$/pos-api/pos-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/pos-carts/pos-carts.iml" filepath="$PROJECT_DIR$/pos-carts/pos-carts.iml" />
       <module fileurl="file://$PROJECT_DIR$/pos-counter/pos-counter.iml" filepath="$PROJECT_DIR$/pos-counter/pos-counter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pos-delivery/pos-delivery.iml" filepath="$PROJECT_DIR$/pos-delivery/pos-delivery.iml" />
       <module fileurl="file://$PROJECT_DIR$/pos-discovery/pos-discovery.iml" filepath="$PROJECT_DIR$/pos-discovery/pos-discovery.iml" />
       <module fileurl="file://$PROJECT_DIR$/pos-gateway/pos-gateway.iml" filepath="$PROJECT_DIR$/pos-gateway/pos-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/pos-orders/pos-orders.iml" filepath="$PROJECT_DIR$/pos-orders/pos-orders.iml" />

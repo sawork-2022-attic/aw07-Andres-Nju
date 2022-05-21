@@ -17,6 +17,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
         </processorPath>
         <module name="pos-carts" />
+        <module name="pos-delivery" />
         <module name="pos-discovery" />
         <module name="pos-orders" />
         <module name="pos-counter" />
@@ -30,6 +31,7 @@
       <module name="pos-api" target="11" />
       <module name="pos-carts" target="11" />
       <module name="pos-counter" target="11" />
+      <module name="pos-delivery" target="11" />
       <module name="pos-discovery" target="11" />
       <module name="pos-gateway" target="11" />
       <module name="pos-orders" target="11" />
@@ -41,6 +43,7 @@
       <module name="pos-api" options="-parameters -Amapstruct.suppressGeneratorTimestamp=true -Amapstruct.suppressGeneratorVersionInfoComment=true -Amapstruct.defaultComponentModel=spring" />
       <module name="pos-carts" options="-parameters -Amapstruct.suppressGeneratorTimestamp=true -Amapstruct.suppressGeneratorVersionInfoComment=true -Amapstruct.defaultComponentModel=spring" />
       <module name="pos-counter" options="-parameters -Amapstruct.suppressGeneratorTimestamp=true -Amapstruct.suppressGeneratorVersionInfoComment=true -Amapstruct.defaultComponentModel=spring" />
+      <module name="pos-delivery" options="-parameters -Amapstruct.suppressGeneratorTimestamp=true -Amapstruct.suppressGeneratorVersionInfoComment=true -Amapstruct.defaultComponentModel=spring" />
       <module name="pos-discovery" options="-parameters -Amapstruct.suppressGeneratorTimestamp=true -Amapstruct.suppressGeneratorVersionInfoComment=true -Amapstruct.defaultComponentModel=spring" />
       <module name="pos-gateway" options="-parameters -Amapstruct.suppressGeneratorTimestamp=true -Amapstruct.suppressGeneratorVersionInfoComment=true -Amapstruct.defaultComponentModel=spring" />
       <module name="pos-orders" options="-parameters -Amapstruct.suppressGeneratorTimestamp=true -Amapstruct.suppressGeneratorVersionInfoComment=true -Amapstruct.defaultComponentModel=spring" />

@@ -43,10 +43,10 @@ public class OrderServiceImpl implements OrderService {
     public void setStreamBridge(StreamBridge streamBridge) { this.streamBridge = streamBridge; }
 
     @Override
-    public Order createOrder(CartDto cart, String time) {
+    public Order createOrder(CartDto cartDto, String time) {
         Order order = new Order().time(time);
         List<Item> items = new ArrayList<>();
-        for (CartItemDto cartItem : cart.getItems()) {
+        for (CartItemDto cartItem : cartDto.getItems()) {
             items.add(
                     new Item().id(null)
                             .productId(cartItem.getProduct().getId())
@@ -57,7 +57,8 @@ public class OrderServiceImpl implements OrderService {
         }
         order.items(items);
         order = orderRepository.saveOrder(order);
-        //sendOrder(order); // send order to rabbitmq
+        orderDtoToSend = orderMapper.toOrderDto(order);
+        sendOrder(order); // send order to rabbitmq
         return order;
     }
 
@@ -66,6 +67,15 @@ public class OrderServiceImpl implements OrderService {
         streamBridge.send("order-send", orderMapper.toOrderDto(order));
     }
 
+    private OrderDto orderDtoToSend = new OrderDto().id(-1).time("2022-1-1");
+
+    @Bean
+    public Supplier<OrderDto> supplyOrder() {
+        return () -> {
+            log.info("supply {}", orderDtoToSend.toString());
+            return orderDtoToSend;
+        };
+    }
 
     @Override
     public List<Order> getAllOrders() {

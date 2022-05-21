@@ -60,3 +60,29 @@ Get /carts/2/total命令获取总价格为149 x 2 = 298：
 然后GET carts查看所有的购物车，发现id为1的购物车已经被删除了：
 
 ![5](ref/5.png)
+
+
+
+### 3 添加pos-delivery模块
+
+- 端口：8086
+- Entry数据结构：
+  - 对应的order
+  - 状态status
+- 文件结构与carts类似，也是自己实现的`DeliveryRepositoryImpl`类在本地存delivery entry信息，避免.save()方法的报错
+
+
+
+### 4 使用rabbitMQ
+
+操作流程：
+
+- `POST /carts/{cartId}/checkout`
+- 发送一个`POST`创建order请求给Order的Controller，在order模块中创建一个supplier，用streamBridge 发送 OrderDto 给 delivery模块
+- 在delivery模块中创建一个consumer，会创建一个新的delivery entry
+
+![6](ref/6.png)
+
+![7](ref/7.png)
+
+![8](ref/8.png)

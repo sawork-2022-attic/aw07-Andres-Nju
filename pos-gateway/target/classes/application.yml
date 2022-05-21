@@ -18,4 +18,8 @@ spring:
           uri: lb://pos-orders
           predicates:
             - Path=/orders/**
+        - id: delivery
+          uri: lb://pos-delivery
+          predicates:
+            - Path=/delivery/**
 
